@@ -14,4 +14,10 @@ router.get('/', (req, res) => {
   .then(task => res.json(task));
 });
 
+router.get('/:id', (req, res) => {
+  let id = req.params.id;
+  Task.findById(id)
+  .then(task => res.json(task));
+});
+
 module.exports = router;
