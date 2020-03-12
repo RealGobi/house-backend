@@ -21,6 +21,8 @@ mongoose
 .then(() => console.log('MongoDB Connected...'))
 .catch(err => console.log(err));
 
+app.use('/task', require('./routes/task'));
+
 app.listen(PORT, function() {
   console.log("Server is running on port: ", PORT);
 });
