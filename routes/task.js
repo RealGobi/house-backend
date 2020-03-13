@@ -14,9 +14,12 @@ router.get('/', (req, res) => {
   .then(task => res.json(task));
 });
 
+// @route   GET task
+// @desc    Get One task
+// @access  All
+
 router.get('/:id', (req, res) => {
-  let id = req.params.id;
-  Task.findById(id)
+  Task.findById(req.params.id)
   .then(task => res.json(task));
 });
 
