@@ -23,6 +23,6 @@ mongoose
 
 app.use('/task', require('./routes/task'));
 
-app.listen(PORT, function() {
+app.listen(PORT, () => {
   console.log("Server is running on port: ", PORT);
 });
