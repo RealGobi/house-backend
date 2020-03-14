@@ -35,7 +35,27 @@ router.post('/add', (req, res) => {
     description: req.body.description,
   });
 
-  newTask.save().then(task => res.json(task));
+  newTask.save().then(task => res.status(200).json(task));
 });
+
+// update
+
+router.post('/update/:id', (req, res) => {
+  console.log('höööööööör');
+  Task.findById(req.params.id, (err, task) => {
+    if (!task) {
+      res.status(400).send('No matching data was found: ', err);
+    } else 
+      task.title = req.body.title;
+      task.step = req.body.step;
+      task.description = req.body.description;
+    
+      task.save().then(task => {
+        res.json('Task updated')
+        
+      })
+    
+  });
+})
 
 module.exports = router;
