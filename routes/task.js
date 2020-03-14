@@ -41,7 +41,6 @@ router.post('/add', (req, res) => {
 // update
 
 router.post('/update/:id', (req, res) => {
-  console.log('höööööööör');
   Task.findById(req.params.id, (err, task) => {
     if (!task) {
       res.status(400).send('No matching data was found: ', err);
