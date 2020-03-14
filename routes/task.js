@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
 // @desc    Create An Task
 // @access  All
 
-router.post('/', (req, res) => {
+router.post('/add', (req, res) => {
   const newTask = new Task({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
