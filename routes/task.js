@@ -57,4 +57,14 @@ router.post('/update/:id', (req, res) => {
   });
 })
 
+// @route   Delete task
+// @desc    Delete One task
+// @access  All
+
+router.delete('/:id', (req, res) => {
+  Task.findById(req.params.id)
+  .then(task => task.remove(() => res.json({success: true})))
+  .catch(err=> res.status(404).json({success: false}))
+});
+
 module.exports = router;
