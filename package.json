@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodmon server.js"
+    "server": "nodemon server.js",
+    "front": "npm start -- prefix ",
+    "dev": "concurrently \"npm run server\" \"npm run start\""
   },
   "proxy": "http://localhost:4000",
   "keywords": [],
