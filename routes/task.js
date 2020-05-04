@@ -36,7 +36,9 @@ router.post('/add', (req, res) => {
     open: req.body.open
   });
 
-  newTask.save().then(task => res.status(200).json(task));
+  newTask.save().then(task => res.status(200).json(task))
+  .catch(err => console.log('Error in request', err)
+  )
 });
 
 // update
