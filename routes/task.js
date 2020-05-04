@@ -33,6 +33,7 @@ router.post('/add', (req, res) => {
     title: req.body.title,
     step: req.body.step,
     description: req.body.description,
+    open: req.body.open
   });
 
   newTask.save().then(task => res.status(200).json(task));
