@@ -31,9 +31,7 @@ router.post('/add', (req, res) => {
   const newTask = new Task({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
-    step: req.body.step,
-    description: req.body.description,
-    open: req.body.open
+    description: req.body.description
   });
 
   newTask.save().then(task => res.status(200).json(task))
