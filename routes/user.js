@@ -3,10 +3,14 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+const config = require('config');
+const jwt = require('jsonwebtoken');
+
+
 // Task Model
 const User = require('../models/user-model');
 
-// @route   GET User
+// @route   POST User
 // @desc    reg now user
 // @access  All
 
