@@ -21,6 +21,7 @@ mongoose
 .catch(err => console.log(err));
 
 app.use('/task', require('./routes/task'));
+app.use('/user', require('./routes/user'));
 
 app.listen(PORT, () => {
   console.log("Server is running on port: ", PORT);
