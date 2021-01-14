@@ -1,33 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const auth = require('../middleware/auth');
 
 // Task Model
 const Task = require('../models/task-model');
+const userModel = require('../models/user-model');
 
 // @route   GET task
 // @desc    Get All task
-// @access  All
+// @access  private
 
-router.get('/', (req, res) => {
+router.get('/' ,auth , (req, res) => {
   Task.find()
   .then(task => res.json(task));
 });
 
 // @route   GET task
 // @desc    Get One task
-// @access  All
+// @access  private
 
-router.get('/:id', (req, res) => {
+router.get('/:id' ,auth , (req, res) => {
   Task.findById(req.params.id)
   .then(task => res.json(task));
 });
 
 // @route   POST /Task
 // @desc    Create An Task
-// @access  All
+// @access  private
 
-router.post('/add', (req, res) => {
+router.post('/add' ,auth , (req, res) => {
   const newTask = new Task({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
@@ -41,7 +43,7 @@ router.post('/add', (req, res) => {
 
 // update
 
-router.post('/update/:id', (req, res) => {
+router.post('/update/:id' ,auth , (req, res) => {
   Task.findById(req.params.id, (err, task) => {
     if (!task) {
       res.status(400).send('No matching data was found: ', err);
@@ -60,12 +62,13 @@ router.post('/update/:id', (req, res) => {
 
 // @route   Delete task
 // @desc    Delete One task
-// @access  All
+// @access  private
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id' ,auth , (req, res) => {
   Task.findById(req.params.id)
   .then(task => task.remove(() => res.json({success: true})))
   .catch(err=> res.status(404).json({success: false}))
 });
+
 
 module.exports = router;
