@@ -38,13 +38,23 @@ bcrypt.genSalt(10, (err, salt)=> {
     newUser.password = hash;
     newUser.save()
     .then(user => {
-      res.json({
-        user: {
-          _id: user.id,
-          name: user.name,
-          email:user.email
+      // jsonwebtoken
+      jwt.sign(
+        { _id:user.id },
+        config.get('jwt_key'),
+        { expiresIn: 3600 }, 
+        (err, token)=> {
+          if (err) throw err;
+          res.json({
+            token,
+            user: {
+              _id: user.id,
+              name: user.name,
+              email:user.email
+            }
+          })
         }
-      })
+      )
     })
   })
 })
