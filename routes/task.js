@@ -11,7 +11,7 @@ const userModel = require('../models/user-model');
 // @desc    Get All task
 // @access  private
 
-router.get('/' ,auth , (req, res) => {
+router.get('/', (req, res) => {
   Task.find()
   .then(task => res.json(task));
 });
