@@ -16,10 +16,10 @@ const User = require('../models/user-model');
 
 router.post('/', (req, res) => {
   // get data from front end
-  const { name, email, password } = req.body;
+  const { name, email, password, street } = req.body;
   // validation
-  if(!name || !email || !password){
-    res.status(400).json({msg:'Fyll i Namn, Email och Lösenord'});
+  if(!name || !email || !password || !street){
+    res.status(400).json({msg:'Fyll i Namn, Email, Lösenord och gatunamn '});
   }
 
   // check for user
@@ -31,7 +31,8 @@ router.post('/', (req, res) => {
      _id: new mongoose.Types.ObjectId(),
     name,
     email,
-    password
+    password,
+    street
     });
 
   // Hash, salt
@@ -54,7 +55,8 @@ bcrypt.genSalt(10, (err, salt)=> {
             user: {
               _id: user.id,
               name: user.name,
-              email:user.email
+              email:user.email,
+              street: user.street
             }
           })
         }
