@@ -28,12 +28,12 @@ router.get('/:id' ,auth , (req, res) => {
 // @route   POST /Task
 // @desc    Create An Task
 // @access  private
-
 router.post('/add' ,auth , (req, res) => {
   const newTask = new Task({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
-    description: req.body.description
+    description: req.body.description,
+    createdAt: new Date
   });
 
   newTask.save().then(task => res.status(200).json(task))
@@ -49,7 +49,6 @@ router.post('/update/:id' ,auth , (req, res) => {
       res.status(400).send('No matching data was found: ', err);
     } else 
       task.title = req.body.title;
-      task.step = req.body.step;
       task.description = req.body.description;
     
       task.save().then(task => {
