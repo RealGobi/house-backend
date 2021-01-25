@@ -5,7 +5,7 @@ const taskSchema = mongoose.Schema({
     title: { type: String, required: true },
 /*     step: { type: String, required: true }, */ 
    description: { type: String, required: true },
-   reg_date: { type: Date, default:Date.now }
+   createdAt: { type: Date }
 });
 
 module.exports = mongoose.model('Task', taskSchema);
