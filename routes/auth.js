@@ -43,7 +43,8 @@ router.post('/', (req, res) => {
             id: user._id,
             name: user.name,
             email:user.email,
-            street: user.street
+            street: user.street,
+            tasks: user.tasks
           }
         })
       }
