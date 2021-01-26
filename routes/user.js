@@ -7,7 +7,7 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 
 
-// Task Model
+// user Model
 const User = require('../models/user-model');
 
 // @route   POST User
@@ -53,7 +53,7 @@ bcrypt.genSalt(10, (err, salt)=> {
           res.json({
             token,
             user: {
-              _id: user.id,
+              id: user._id,
               name: user.name,
               email:user.email,
               street: user.street
