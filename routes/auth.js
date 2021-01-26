@@ -7,7 +7,6 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
  const auth = require('../middleware/auth');
 
-// Task Model
 const User = require('../models/user-model');
 
 // @route   Post auth
@@ -43,8 +42,7 @@ router.post('/', (req, res) => {
             id: user._id,
             name: user.name,
             email:user.email,
-            street: user.street,
-            tasks: user.tasks
+            street: user.street
           }
         })
       }
