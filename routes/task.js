@@ -33,6 +33,7 @@ router.post('/add' ,auth , (req, res) => {
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
     description: req.body.description,
+    addedBy: req.body.userId,
     createdAt: new Date
   });
 
