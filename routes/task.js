@@ -29,11 +29,15 @@ router.get('/:id' ,auth , (req, res) => {
 // @desc    Create An Task
 // @access  private
 router.post('/add' ,auth , (req, res) => {
+  console.log(req);
+
+
   const newTask = new Task({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
     description: req.body.description,
     addedBy: req.body.userId,
+   // photo: photo,
     createdAt: new Date
   });
 

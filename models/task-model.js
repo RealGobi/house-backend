@@ -6,6 +6,7 @@ const taskSchema = mongoose.Schema({
 /*     step: { type: String, required: true }, */ 
    description: { type: String, required: true },
    addedBy: { type: String, required: true },
+   photo: {type: String},
    createdAt: { type: Date }
 });
 
