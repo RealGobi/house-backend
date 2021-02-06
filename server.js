@@ -2,12 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('config');
-
+const fileUpload = require('express-fileupload');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(fileUpload());
 
 // Connect to Mongo
 const db = config.get('mongoURI');
